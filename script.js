@@ -56,9 +56,17 @@ for(i=1; i<=10 ;i++){
     if(i==5){
         console.log("TICKETS ARE OVER");
     }
-   
 }
 
 // Print 1 to 10 numbers using for loop but if number is 5 print "SKIPPING NUMBER 5".
+for( i=1 ; i<=10; i++){
+    if (i == 5){
+        console.log("SKIPPING NUMBER 5");
+    }
+    else{
+        console.log(i)
+    }
+}
+
 // Printing 2 table up to 2 X 10 = 20 with for loop.
 // Printing 2 table up to 2 X 10 = 20 with while loop.
