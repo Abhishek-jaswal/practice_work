@@ -137,13 +137,67 @@ function print_table(n){
 print_table(5);
 
 // Find the sum of the first N - 5 odd numbers.
+function sum_of_odd_numbers(n){
+    let sum = 0;
+    for(let i = 1; i <= n; i += 2){
+        sum += i;
+    }
+    return sum;
+}
+console.log(sum_of_odd_numbers(10));
 
+
+function sum_of_odd(n){
+    const sum = n - 5;
+    if (sum <= 0) {
+        return 0; 
+    }
+    console.log(sum*sum);
+}
+sum_of_odd(10);
 
 // Find the sum of the first N even numbers.
+
+function sum_of_even(n){
+    return (n* (n+1));
+}
+console.log(sum_of_even(8));
+
 // Find the sum of squares of first N natural numbers.
+function sum_of_squares(n){
+    let sum = 0;
+    for(let i = 1; i <= n; i++){
+        sum += i * i;
+    }
+    return sum;
+}
+console.log(sum_of_squares(5));
+
+
+function sumOfSquares(N) {
+  return (N * (N + 1) * (2 * N + 1)) / 6;
+}
+
+console.log("Sum of squares:", sumOfSquares(5)); 
+
+
 // Check if a number is a power of 2.
+function isPowerOfTwo(n) {
+    while (n > 1) {
+        if (n % 2 !== 0) return false;
+        n /= 2;
+    }
+    return true;
+}
+console.log(isPowerOfTwo(4)); // true
+
 // Write a calculator app that does operations (+, -, ×, /, %).
 // Find the sum of n natural numbers using formulae.
+function sumOfNaturalNumbers(n) {
+    return (n * (n + 1)) / 2;
+}
+console.log(sumOfNaturalNumbers(10)); 
+
 // Find the sum of n natural numbers without formulae.
 // Find out whether a number is prime or not.
 // Find the factorial of a given number.
