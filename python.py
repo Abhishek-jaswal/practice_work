@@ -24,5 +24,9 @@ for i in range(1, 11):
     print(i)
 
 # Printing 1 to 10 numbers using while loop.
+i=1
+while i<=10:
+       print(i)
+       i+1
+       
 # Printing 10 to 1 numbers using for loop.
-# Printing 1 to 10 numbers using for loop.
