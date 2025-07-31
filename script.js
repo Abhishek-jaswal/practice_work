@@ -80,3 +80,58 @@ while(i<=10){
     console.log("2 X " + i + " = " + (2 * i));
     i++;
 }
+// Find the smallest of three numbers (a, b, c).
+function samallest_number(a,b,c){
+    if (a<=b && a<=c){
+        return a
+    }
+    else if (b<=c && b<=a){
+        return b
+    }
+    else {
+        return c
+    }
+}
+console.log(samallest_number(10,1,12))
+
+// Check if a number is divisible by 2.
+function divisible(a){
+   if (a % 2 == 0){
+   console.log("The number is divisible by 2",true)
+   }
+   else{
+    console.log("The number is not divisible by 2",false)
+   }
+}
+divisible(25);
+
+// Check if a number is divisible by 3.
+function divisible_by_three(a){
+   if (a % 3 == 0){
+   console.log("The number is divisible by 2" ,true)
+   }
+   else{
+    console.log("The number is not divisible by 2", false)
+   }
+}
+divisible_by_three(21);
+
+// Check if a number is divisible by 5.
+function divisible_by_five(a){
+   if (a % 5 == 0){
+   console.log("The number is divisible by 5" ,true)
+   }
+   else{
+    console.log("The number is not divisible by 5", false)
+   }
+}
+divisible_by_five(25);
+
+// Printing n table with for loop.
+function print_table(n){
+    for(i=1; i<=10; i++){
+    console.log(n +" X " + i + " = " + (n * i));
+
+}
+}
+print_table(5);
