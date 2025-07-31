@@ -135,3 +135,18 @@ function print_table(n){
 }
 }
 print_table(5);
+
+// Find the sum of the first N - 5 odd numbers.
+
+
+// Find the sum of the first N even numbers.
+// Find the sum of squares of first N natural numbers.
+// Check if a number is a power of 2.
+// Write a calculator app that does operations (+, -, ×, /, %).
+// Find the sum of n natural numbers using formulae.
+// Find the sum of n natural numbers without formulae.
+// Find out whether a number is prime or not.
+// Find the factorial of a given number.
+// Find the sum of digits of a number.
+// Check if a number is a perfect number.
+// Check if a number is an Armstrong number.
