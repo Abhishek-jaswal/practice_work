@@ -192,6 +192,23 @@ function isPowerOfTwo(n) {
 console.log(isPowerOfTwo(4)); // true
 
 // Write a calculator app that does operations (+, -, ×, /, %).
+function calculator(a, b, operation) {
+    switch (operation) {
+        case '+':
+            return a + b;
+        case '-':
+            return a - b;
+        case '*':
+            return a * b;
+        case '/':
+            return a / b;
+        case '%':
+            return a % b;
+        default:
+            return 'Invalid operation';
+    }
+}
+console.log(calculator(10, 5, '+')); 
 // Find the sum of n natural numbers using formulae.
 function sumOfNaturalNumbers(n) {
     return (n * (n + 1)) / 2;
@@ -199,8 +216,55 @@ function sumOfNaturalNumbers(n) {
 console.log(sumOfNaturalNumbers(10)); 
 
 // Find the sum of n natural numbers without formulae.
+function sumOfNaturalNumbersWithoutFormula(n) {
+    let sum = 0;
+    for (let i = 1; i <= n; i++) {
+        sum += i;
+    }
+    return sum;
+}
+console.log(sumOfNaturalNumbersWithoutFormula(10));
 // Find out whether a number is prime or not.
+function isPrime(num) {
+    if (num <= 1) return false;
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+    }
+    return true;
+}
+console.log(isPrime(7)); // true
 // Find the factorial of a given number.
+function factorial(n) {
+    if (n === 0) return 1;
+    return n * factorial(n - 1);
+}
+console.log(factorial(5)); // 120
+
 // Find the sum of digits of a number.
+function sumOfDigits(num) {
+    let sum = 0;
+    while (num > 0) {
+        sum += num % 10;
+        num = Math.floor(num / 10);
+    }
+    return sum;
+}
+console.log(sumOfDigits(123)); // 6
+
 // Check if a number is a perfect number.
+function isPerfectNumber(num) {
+    let sum = 0;
+    for (let i = 1; i < num; i++) {
+        if (num % i === 0) sum += i;
+    }
+    return sum === num;
+}
+console.log(isPerfectNumber(6)); // true
+
 // Check if a number is an Armstrong number.
+function isArmstrongNumber(num) {
+    const digits = String(num).split("");
+    const sum = digits.reduce((acc, digit) => acc + Math.pow(Number(digit), digits.length), 0);
+    return sum === num;
+}
+console.log(isArmstrongNumber(153)); // true
