@@ -71,7 +71,12 @@ for( i=1 ; i<=10; i++){
 // Printing 2 table up to 2 X 10 = 20 with for loop.
 for(i=1; i<=10; i++){
     console.log("2 X " + i + " = " + (2 * i));
-    
+
 }
 
 // Printing 2 table up to 2 X 10 = 20 with while loop.
+i=1;
+while(i<=10){
+    console.log("2 X " + i + " = " + (2 * i));
+    i++;
+}
