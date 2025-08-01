@@ -209,6 +209,7 @@ function calculator(a, b, operation) {
     }
 }
 console.log(calculator(10, 5, '+')); 
+
 // Find the sum of n natural numbers using formulae.
 function sumOfNaturalNumbers(n) {
     return (n * (n + 1)) / 2;
@@ -224,6 +225,7 @@ function sumOfNaturalNumbersWithoutFormula(n) {
     return sum;
 }
 console.log(sumOfNaturalNumbersWithoutFormula(10));
+
 // Find out whether a number is prime or not.
 function isPrime(num) {
     if (num <= 1) return false;
@@ -232,13 +234,14 @@ function isPrime(num) {
     }
     return true;
 }
-console.log(isPrime(7)); // true
+console.log(isPrime(7)); 
+
 // Find the factorial of a given number.
 function factorial(n) {
     if (n === 0) return 1;
     return n * factorial(n - 1);
 }
-console.log(factorial(5)); // 120
+console.log(factorial(5)); 
 
 // Find the sum of digits of a number.
 function sumOfDigits(num) {
@@ -249,7 +252,7 @@ function sumOfDigits(num) {
     }
     return sum;
 }
-console.log(sumOfDigits(123)); // 6
+console.log(sumOfDigits(123));
 
 // Check if a number is a perfect number.
 function isPerfectNumber(num) {
@@ -259,7 +262,7 @@ function isPerfectNumber(num) {
     }
     return sum === num;
 }
-console.log(isPerfectNumber(6)); // true
+console.log(isPerfectNumber(6)); 
 
 // Check if a number is an Armstrong number.
 function isArmstrongNumber(num) {
@@ -267,4 +270,126 @@ function isArmstrongNumber(num) {
     const sum = digits.reduce((acc, digit) => acc + Math.pow(Number(digit), digits.length), 0);
     return sum === num;
 }
-console.log(isArmstrongNumber(153)); // true
+console.log(isArmstrongNumber(153)); 
+
+// Find the GCD (Greatest Common Divisor) of two numbers using Euclid’s algorithm.
+function gcd(a, b) {
+    while (b !== 0) {
+        const temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+console.log(gcd(48, 18)); 
+
+// Find if a number is a palindrome.
+function isPalindrome(num) {
+    const str = String(num);
+    return str === str.split("").reverse().join("");
+}
+console.log(isPalindrome(121));
+
+// Find the reverse of a number.
+function reverseNumber(num) {
+    return Number(String(num).split("").reverse().join(""));
+}
+console.log(reverseNumber(12345));
+
+// Check if a number is a prime number.
+function isPrime(num) {
+    if (num <= 1) return false;
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+    }
+    return true;
+}
+console.log(isPrime(7));
+
+// Find all prime numbers up to N.
+function findPrimes(n) {
+    const primes = [];
+    for (let i = 2; i <= n; i++) {
+        if (isPrime(i)) {
+            primes.push(i);
+        }
+    }
+    return primes;
+}
+console.log(findPrimes(30));
+
+// Find the Fibonacci series up to N numbers.
+function fibonacciSeries(n) {
+    const series = [0, 1];
+    for (let i = 2; i < n; i++) {
+        series.push(series[i - 1] + series[i - 2]);
+    }
+    return series;
+}
+console.log(fibonacciSeries(10));
+
+// Check if a number is a perfect square.
+function isPerfectSquare(num) {
+    const sqrt = Math.sqrt(num);
+    return sqrt * sqrt === num;
+}
+console.log(isPerfectSquare(16));
+
+// Find the sum of cubes of first N natural numbers.
+function sumOfCubes(n) {
+    return Math.pow((n * (n + 1)) / 2, 2);
+}
+console.log(sumOfCubes(3));
+
+// Find the N-th Fibonacci number using dynamic programming.
+function fibonacci(n) {
+    const dp = [0, 1];
+    for (let i = 2; i <= n; i++) {
+        dp[i] = dp[i - 1] + dp[i - 2];
+    }
+    return dp[n];
+}
+console.log(fibonacci(10));
+
+// Find the prime factorization of a number.
+function primeFactorization(n) {
+    const factors = [];
+    for (let i = 2; i <= Math.sqrt(n); i++) {
+        while (n % i === 0) {
+            factors.push(i);
+            n /= i;
+        }
+    }
+    if (n > 1) factors.push(n);
+    return factors;
+}
+console.log(primeFactorization(28));
+
+// Find the product of digits of a number.
+function productOfDigits(num) {
+    let product = 1;
+    while (num > 0) {
+        product *= num % 10;
+        num = Math.floor(num / 10);
+    }
+    return product;
+}
+console.log(productOfDigits(123));
+
+// Calculate the nth triangular number.
+function triangularNumber(n) {
+    return (n * (n + 1)) / 2;
+}
+console.log(triangularNumber(5));
+
+// Find the number of digits in a number.
+function countDigits(num) {
+    return String(num).length;
+}
+console.log(countDigits(12345));
+
+// Find the greatest of four numbers.
+function findGreatestOfFour(a, b, c, d) {
+    return Math.max(a, b, c, d);
+}
+console.log(findGreatestOfFour(1, 2, 3, 4));
