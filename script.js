@@ -562,117 +562,82 @@ function removeDuplicates(arr) {
 console.log("Array after removing duplicates:", removeDuplicates([1, 2, 2, 3, 4, 4, 5]));
 
 
-
-
-// Convert a JavaScript object to JSON string
-function objectToJson(obj) {
-    return JSON.stringify(obj);
-}
-console.log(objectToJson({ name: "John", age: 30 }));
-// Parse a JSON string back to a JavaScript object
-function jsonToObject(json) {
-    return JSON.parse(json);
-}
-console.log(jsonToObject('{"name":"John","age":30}'));
-// Create a JSON object with nested properties
-let nestedJson = {
-    name: "John",
+// Create an object representing a person with name, age, and city properties
+let person = {
+    name: "John Doe",
     age: 30,
+    city: "New York"
+};
+console.log(person);
+
+// Create an object representing a book with title, author, and year properties
+let book = {
+    title: "To Kill a Mockingbird",
+    author: "Harper Lee",
+    year: 1960
+};
+
+console.log(book);
+
+// Create an object representing a car with brand, model, and year properties
+let car = {
+    brand: "Toyota",
+    model: "Camry",
+    year: 2020
+};
+
+console.log(car);
+// Access and print specific properties of an object
+let car = {
+    brand: "Toyota",
+    model: "Camry",
+    year: 2020
+};
+console.log("Car brand:", car.brand);
+// Add a new property to an existing object
+let car = {
+    brand: "Toyota",
+    model: "Camry",
+    year: 2020
+};
+car.color = "Blue";
+console.log("Updated car object:", car);
+// Create an object with a method that returns a formatted string
+let person = {
+    name: "Alice",
+    age: 25,
+    greet: function() {
+        return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+    }
+};
+console.log(person.greet());
+// Create nested objects (object within object)
+let student = {
+    name: "Bob",
+    age: 20,
     address: {
         street: "123 Main St",
-        city: "New York"
+        city: "Springfield",
+        country: "USA"
     }
 };
-console.log(objectToJson(nestedJson));
-// Access specific properties from a parsed JSON object
-function accessJsonProperty(json, property) {
-    let obj = jsonToObject(json);
-    return obj[property];
-}
-console.log(accessJsonProperty('{"name":"John","age":30}', "name"));
-// Convert an array of objects to JSON string
-function arrayToJson(arr) {
-    return JSON.stringify(arr);
-}
-console.log(arrayToJson([{ name: "John" }, { name: "Jane" }]));
-// Parse JSON data from an API response
-function parseApiResponse(response) {
-    return JSON.parse(response);
-}
-console.log(parseApiResponse('{"status":"success","data":[1,2,3]}'));
-// Create a JSON object with different data types
-let mixedJson = {
-    name: "John",
-    age: 30,
-    isActive: true,
-    hobbies: ["reading", "gaming"],
-    address: null
+console.log("Student address:", student.address);
+// Create an object with an array property
+let library = {
+    name: "City Library",
+    books: [
+        { title: "1984", author: "George Orwell" },
+        { title: "To Kill a Mockingbird", author: "Harper Lee" }
+    ]
 };
-console.log(objectToJson(mixedJson));
-// Validate if a string is valid JSON
-function isValidJson(jsonString) {
-    try {
-        JSON.parse(jsonString);
-        return true;
-    } catch (e) {
-        return false;
-    }
+console.log("Library books:", library.books);
+// Write a function that takes an object and returns all its keys
+function getObjectKeys(obj) {
+    return Object.keys(obj);
 }
-console.log(isValidJson('{"name":"John","age":30}'));
-
-// Convert JSON data to a formatted string
-function formatJson(json) {
-    return JSON.stringify(json, null, 2);
+console.log(getObjectKeys({ name: "Alice", age: 25, city: "Wonderland" }));
+// Write a function that takes an object and returns all its values
+function getObjectValues(obj) {
+    return Object.values(obj);
 }
-console.log(formatJson({ name: "John", age: 30 }));
-// Extract specific values from a complex JSON structure
-function extractValues(json, keys) {
-    let obj = jsonToObject(json);
-    return keys.map(key => obj[key]);
-}
-console.log(extractValues('{"name":"John","age":30,"city":"New York"}', ["name", "city"]));
-// Create a JSON object with arrays and objects
-let complexJson = {
-    users: [
-        { name: "John", age: 30 },
-        { name: "Jane", age: 25 }
-    ],
-    active: true,
-    tags: ["developer", "designer"]
-};
-console.log(objectToJson(complexJson));
-// Convert JSON data to a table format
-function jsonToTable(json) {
-    let obj = jsonToObject(json);
-    let table = "<table>";
-    for (let key in obj) {
-        table += `<tr><td>${key}</td><td>${obj[key]}</td></tr>`;
-    }
-    table += "</table>";
-    return table;
-}
-console.log(jsonToTable('{"name":"John","age":30,"city":"New York"}'));
-// Filter JSON data based on specific criteria
-function filterJsonData(json, criteria) {
-    let obj = jsonToObject(json);
-    return Object.keys(obj)
-        .filter(key => obj[key] === criteria)
-        .reduce((result, key) => {
-            result[key] = obj[key];
-            return result;
-        }, {});
-}
-console.log(filterJsonData('{"name":"John","age":30,"city":"New York"}', "John"));
-// Sort JSON data by a specific property
-function sortJsonByProperty(json, property) {
-    let arr = jsonToObject(json);
-    return arr.sort((a, b) => a[property] > b[property] ? 1 : -1);
-}
-console.log(sortJsonByProperty('[{"name":"John","age":30},{"name":"Jane","age":25}]', "age"));
-// Create a JSON object with boolean and null values   
-let booleanJson = {
-    isActive: true,
-    isVerified: false,
-    address: null
-};
-console.log(objectToJson(booleanJson)); 
+console.log(getObjectValues({ name: "Alice", age: 25, city: "Wonderland" }));
