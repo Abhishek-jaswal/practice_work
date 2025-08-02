@@ -564,84 +564,115 @@ console.log("Array after removing duplicates:", removeDuplicates([1, 2, 2, 3, 4,
 
 
 
-// Create a template literal that displays a person's name and age
+// Check if a string contains only digits using regex
 
-let name = "John";
-let age = 30;
-let personInfo = `My name is ${name} and I am ${age} years old.`;
-console.log(personInfo);
+function isOnlyDigits(str) {
+    const regex = /^\d+$/;
+    return regex.test(str);
+}
+console.log(isOnlyDigits("12345")); 
+console.log(isOnlyDigits("123a45")); 
 
-// Create a template literal that shows a product name and its price
-let productName = "Laptop";
-let productPrice = 999.99;
-let productInfo = `The product ${productName} costs $${productPrice}.`;
-console.log(productInfo);
+// Check if a string contains only letters using regex
+function isOnlyLetters(str) {
+    const regex = /^[A-Za-z]+$/;
+    return regex.test(str);
+}
+console.log(isOnlyLetters("Hello")); 
+console.log(isOnlyLetters("Hello123")); 
 
-// Create a multi-line template literal for a simple poem
-let poem = `Roses are red,
-Violets are blue,
-Sugar is sweet,
-And so are you.`;
-console.log(poem);
+// Check if a string is a valid email address using regex
+function isValidEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+console.log(isValidEmail("test@example.com")); 
+console.log(isValidEmail("test@example")); 
 
-// Create a template literal that displays current date and time
-let currentDate = new Date();
-let dateInfo = `Current date and time: ${currentDate}`;
-console.log(dateInfo);
+// Check if a string starts with a specific letter using regex
+function startsWithLetter(str, letter) {
+    const regex = new RegExp(`^${letter}`);
+    return regex.test(str);
+}
+console.log(startsWithLetter("Hello", "H")); 
+console.log(startsWithLetter("Hello", "h")); 
 
-// Create a template literal that shows a student's grades in different subjects
-let studentName = "Alice";
-let mathGrade = 95;
-let scienceGrade = 90;
-let englishGrade = 85;
-let gradesInfo = `Student: ${studentName}
-Math: ${mathGrade}
-Science: ${scienceGrade}
-English: ${englishGrade}`;
-console.log(gradesInfo);
+// Check if a string ends with a specific letter using regex
+function endsWithLetter(str, letter) {
+    const regex = new RegExp(`${letter}$`);
+    return regex.test(str);
+}
+console.log(endsWithLetter("Hello", "o")); 
+console.log(endsWithLetter("Hello", "O")); 
 
-// Create a template literal for a simple HTML structure
-let htmlStructure = `
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Document</title>
-</head>
-<body>
-    <h1>Hello, World!</h1>
-</body>
-</html>`;
-console.log(htmlStructure);
+// Find all numbers in a string using regex
 
-// Create a template literal that displays weather information
-let city = "New York";
-let temperature = 75;
-let weatherInfo = `The current temperature in ${city} is ${temperature}°F.`;
-console.log(weatherInfo);
-// Create a template literal for a simple email template
-let emailRecipient = "Bob";
-let emailSubject = "Meeting Reminder";
-let emailBody = `Hi ${emailRecipient},
+function findNumbersInString(str) {
+    const regex = /\d+/g;
+    return str.match(regex) || [];
+}
+console.log(findNumbersInString("There are 2 apples and 3 oranges."));
 
-This is a reminder for our meeting scheduled for tomorrow.
+// Replace all spaces with underscores using regex
 
-Best,
-Alice`;
-console.log(emailBody);
+function replaceSpacesWithUnderscores(str) {
+    const regex = /\s+/g;
+    return str.replace(regex, "_");
+}
+console.log(replaceSpacesWithUnderscores("Hello World! How are you?"));
 
-// Create a template literal that shows a book's details
-let bookTitle = "The Great Gatsby";
-let bookAuthor = "F. Scott Fitzgerald";
-let bookInfo = `Book Title: ${bookTitle}
-Author: ${bookAuthor}`;
-console.log(bookInfo);
-
-// Create a template literal for a simple address format
-let street = "123 Main St";
-let city = "Anytown";
-let state = "CA";
-let zip = "12345";
-let address = `Address:
-${street}
-${city}, ${state} ${zip}`;
-console.log(address);
+// Check if a string contains at least one uppercase letter using regex
+function containsUppercase(str) {
+    const regex = /[A-Z]/;
+    return regex.test(str);
+}
+console.log(containsUppercase("Hello"));
+console.log(containsUppercase("hello"));
+// Check if a string contains at least one lowercase letter using regex
+function containsLowercase(str) {
+    const regex = /[a-z]/;
+    return regex.test(str);
+}
+console.log(containsLowercase("Hello"));
+console.log(containsLowercase("HELLO"));
+// Check if a string contains at least one number using regex
+function containsNumber(str) {
+    const regex = /\d/;
+    return regex.test(str);
+}
+console.log(containsNumber("Hello123"));
+console.log(containsNumber("Hello"));
+// Check if a string contains at least one special character using regex
+function containsSpecialCharacter(str) {
+    const regex = /[!@#$%^&*(),.?":{}|<>]/;
+    return regex.test(str);
+}
+console.log(containsSpecialCharacter("Hello!"));
+console.log(containsSpecialCharacter("Hello"));
+// Validate a phone number format using regex
+function isValidPhoneNumber(phone) {
+    const regex = /^\d{10}$/; // Adjust the regex based on your phone number format
+    return regex.test(phone);
+}
+console.log(isValidPhoneNumber("1234567890"));
+console.log(isValidPhoneNumber("123-456-7890"));
+// Validate a date format (DD/MM/YYYY) using regex
+function isValidDate(date) {
+    const regex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/\d{4}$/;
+    return regex.test(date);
+}
+console.log(isValidDate("31/12/2023"));
+console.log(isValidDate("31-12-2023"));
+// Extract all words from a string using regex
+function extractWords(str) {
+    const regex = /\b\w+\b/g;
+    return str.match(regex) || [];
+}
+console.log(extractWords("Hello World! How are you?"));
+// Check if a string is a valid URL using regex
+function isValidURL(url) {
+    const regex = /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,6}(\/[^\s]*)?$/i;
+    return regex.test(url);
+}
+console.log(isValidURL("https://www.example.com"));
+console.log(isValidURL("invalid-url"));
