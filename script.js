@@ -479,12 +479,12 @@ for (let i = 1; i <= 30; i++) {
 
 
 // Print an array element by element
-let arr = [1, 2, 3, 4, 5];
+let ar = [1, 2, 3, 4, 5];
 for (let i = 0; i < arr.length; i++) {
     console.log(arr[i]);
 }
 // Find the size of the array elements
-let arr = [1, 2, 3, 4, 5];
+let arrr = [1, 2, 3, 4, 5];
 console.log("Size of array:", arr.length);
 
 // Remove duplicates from a list of numbers
@@ -564,115 +564,115 @@ console.log("Array after removing duplicates:", removeDuplicates([1, 2, 2, 3, 4,
 
 
 
-// Check if a string contains only digits using regex
+// Convert a JavaScript object to JSON string
+function objectToJson(obj) {
+    return JSON.stringify(obj);
+}
+console.log(objectToJson({ name: "John", age: 30 }));
+// Parse a JSON string back to a JavaScript object
+function jsonToObject(json) {
+    return JSON.parse(json);
+}
+console.log(jsonToObject('{"name":"John","age":30}'));
+// Create a JSON object with nested properties
+let nestedJson = {
+    name: "John",
+    age: 30,
+    address: {
+        street: "123 Main St",
+        city: "New York"
+    }
+};
+console.log(objectToJson(nestedJson));
+// Access specific properties from a parsed JSON object
+function accessJsonProperty(json, property) {
+    let obj = jsonToObject(json);
+    return obj[property];
+}
+console.log(accessJsonProperty('{"name":"John","age":30}', "name"));
+// Convert an array of objects to JSON string
+function arrayToJson(arr) {
+    return JSON.stringify(arr);
+}
+console.log(arrayToJson([{ name: "John" }, { name: "Jane" }]));
+// Parse JSON data from an API response
+function parseApiResponse(response) {
+    return JSON.parse(response);
+}
+console.log(parseApiResponse('{"status":"success","data":[1,2,3]}'));
+// Create a JSON object with different data types
+let mixedJson = {
+    name: "John",
+    age: 30,
+    isActive: true,
+    hobbies: ["reading", "gaming"],
+    address: null
+};
+console.log(objectToJson(mixedJson));
+// Validate if a string is valid JSON
+function isValidJson(jsonString) {
+    try {
+        JSON.parse(jsonString);
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
+console.log(isValidJson('{"name":"John","age":30}'));
 
-function isOnlyDigits(str) {
-    const regex = /^\d+$/;
-    return regex.test(str);
+// Convert JSON data to a formatted string
+function formatJson(json) {
+    return JSON.stringify(json, null, 2);
 }
-console.log(isOnlyDigits("12345")); 
-console.log(isOnlyDigits("123a45")); 
-
-// Check if a string contains only letters using regex
-function isOnlyLetters(str) {
-    const regex = /^[A-Za-z]+$/;
-    return regex.test(str);
+console.log(formatJson({ name: "John", age: 30 }));
+// Extract specific values from a complex JSON structure
+function extractValues(json, keys) {
+    let obj = jsonToObject(json);
+    return keys.map(key => obj[key]);
 }
-console.log(isOnlyLetters("Hello")); 
-console.log(isOnlyLetters("Hello123")); 
-
-// Check if a string is a valid email address using regex
-function isValidEmail(email) {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
+console.log(extractValues('{"name":"John","age":30,"city":"New York"}', ["name", "city"]));
+// Create a JSON object with arrays and objects
+let complexJson = {
+    users: [
+        { name: "John", age: 30 },
+        { name: "Jane", age: 25 }
+    ],
+    active: true,
+    tags: ["developer", "designer"]
+};
+console.log(objectToJson(complexJson));
+// Convert JSON data to a table format
+function jsonToTable(json) {
+    let obj = jsonToObject(json);
+    let table = "<table>";
+    for (let key in obj) {
+        table += `<tr><td>${key}</td><td>${obj[key]}</td></tr>`;
+    }
+    table += "</table>";
+    return table;
 }
-console.log(isValidEmail("test@example.com")); 
-console.log(isValidEmail("test@example")); 
-
-// Check if a string starts with a specific letter using regex
-function startsWithLetter(str, letter) {
-    const regex = new RegExp(`^${letter}`);
-    return regex.test(str);
+console.log(jsonToTable('{"name":"John","age":30,"city":"New York"}'));
+// Filter JSON data based on specific criteria
+function filterJsonData(json, criteria) {
+    let obj = jsonToObject(json);
+    return Object.keys(obj)
+        .filter(key => obj[key] === criteria)
+        .reduce((result, key) => {
+            result[key] = obj[key];
+            return result;
+        }, {});
 }
-console.log(startsWithLetter("Hello", "H")); 
-console.log(startsWithLetter("Hello", "h")); 
-
-// Check if a string ends with a specific letter using regex
-function endsWithLetter(str, letter) {
-    const regex = new RegExp(`${letter}$`);
-    return regex.test(str);
+console.log(filterJsonData('{"name":"John","age":30,"city":"New York"}', "John"));
+// Sort JSON data by a specific property
+function sortJsonByProperty(json, property) {
+    let arr = jsonToObject(json);
+    return arr.sort((a, b) => a[property] > b[property] ? 1 : -1);
 }
-console.log(endsWithLetter("Hello", "o")); 
-console.log(endsWithLetter("Hello", "O")); 
-
-// Find all numbers in a string using regex
-
-function findNumbersInString(str) {
-    const regex = /\d+/g;
-    return str.match(regex) || [];
-}
-console.log(findNumbersInString("There are 2 apples and 3 oranges."));
-
-// Replace all spaces with underscores using regex
-
-function replaceSpacesWithUnderscores(str) {
-    const regex = /\s+/g;
-    return str.replace(regex, "_");
-}
-console.log(replaceSpacesWithUnderscores("Hello World! How are you?"));
-
-// Check if a string contains at least one uppercase letter using regex
-function containsUppercase(str) {
-    const regex = /[A-Z]/;
-    return regex.test(str);
-}
-console.log(containsUppercase("Hello"));
-console.log(containsUppercase("hello"));
-// Check if a string contains at least one lowercase letter using regex
-function containsLowercase(str) {
-    const regex = /[a-z]/;
-    return regex.test(str);
-}
-console.log(containsLowercase("Hello"));
-console.log(containsLowercase("HELLO"));
-// Check if a string contains at least one number using regex
-function containsNumber(str) {
-    const regex = /\d/;
-    return regex.test(str);
-}
-console.log(containsNumber("Hello123"));
-console.log(containsNumber("Hello"));
-// Check if a string contains at least one special character using regex
-function containsSpecialCharacter(str) {
-    const regex = /[!@#$%^&*(),.?":{}|<>]/;
-    return regex.test(str);
-}
-console.log(containsSpecialCharacter("Hello!"));
-console.log(containsSpecialCharacter("Hello"));
-// Validate a phone number format using regex
-function isValidPhoneNumber(phone) {
-    const regex = /^\d{10}$/; // Adjust the regex based on your phone number format
-    return regex.test(phone);
-}
-console.log(isValidPhoneNumber("1234567890"));
-console.log(isValidPhoneNumber("123-456-7890"));
-// Validate a date format (DD/MM/YYYY) using regex
-function isValidDate(date) {
-    const regex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/\d{4}$/;
-    return regex.test(date);
-}
-console.log(isValidDate("31/12/2023"));
-console.log(isValidDate("31-12-2023"));
-// Extract all words from a string using regex
-function extractWords(str) {
-    const regex = /\b\w+\b/g;
-    return str.match(regex) || [];
-}
-console.log(extractWords("Hello World! How are you?"));
-// Check if a string is a valid URL using regex
-function isValidURL(url) {
-    const regex = /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,6}(\/[^\s]*)?$/i;
-    return regex.test(url);
-}
-console.log(isValidURL("https://www.example.com"));
-console.log(isValidURL("invalid-url"));
+console.log(sortJsonByProperty('[{"name":"John","age":30},{"name":"Jane","age":25}]', "age"));
+// Create a JSON object with boolean and null values   
+let booleanJson = {
+    isActive: true,
+    isVerified: false,
+    address: null
+};
+console.log(objectToJson(booleanJson)); 
