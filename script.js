@@ -606,87 +606,108 @@ console.log(add_toNumber(10,20));
 
 
 
+// Create a function with a local variable and try to access it outside
+function showMessage(){
+    let message = "Hello, this is a local variable!";
+  console.log("Inside function:", message);
+}
+showMessage();
+console.log("Outside function:", message);
+// Create a block with let/const variables and try to access them outside
+{
+  let a = 10;
+  const b = 20;
+  console.log("Inside block: a =", a); 
+  console.log("Inside block: b =", b); 
+}
 
-// Create an IIFE that prints "Hello World"
-( function(){
-console.log("Hello World")
-})();
-// Create an IIFE that takes a parameter and prints it
-( function(message){
-console.log(message)
-})("Hello World");
-// Create an IIFE that returns a value
-const value = (function(){
-    return 42;
-})();
-console.log(value);
-// Create an IIFE that creates a private variable
-const counter = (function(){
-    let count = 0;
-    return {
-        increment(){
-            count++;
-            console.log("count"+count);
-        },
-        getCount(){
-            return count;
-        }
-    }
-})
-counter.increment(); 
-counter.increment(); 
-console.log(counter.getCount());
-// Create an IIFE that returns a function
-const greeter = (function(){
-    const greeting = "Hello"
-    return function(name){
-       console.log(`${greeting}, ${name}`)
-    }
-})();
-greeter("John Doe")
-// Create an IIFE with arrow function syntax
-(()=>{
-    console.log("hello world")
-})();
-// Create an IIFE that takes multiple parameters
-const sum = ((a,b)=>{
-   return a+b;
-})(2,3)
-console.log("sum is "+ sum)
-// Create an IIFE that performs a calculation
-const summ = ((a,b,c)=>{
-    return `${a}${c}${b}`
-})(2,3,"-")
-console.log( summ)
-// Create an IIFE that creates an object
-const user = (function () {
-  const name = "John Doe";
-  const role = "Developer";
+console.log("Outside block: a =", a); 
+console.log("Outside block: b =", b);
+// Create nested functions and access variables from outer scope
+function outerFunction() {
+  const outerVar = "I'm from outerFunction";
 
-  return {
-    getName() {
-      return name;
-    },
-    getRole() {
-      return role;
-    },
-    greet() {
-      console.log(`Hello, I'm ${name}, and I'm a ${role}.`);
-    }
-  };
-})();
-
-// Usage
-user.greet();                
-console.log(user.getName()); 
-console.log(user.getRole());
-// Create an IIFE that creates an array
-const evenNumbers = (function () {
-  const arr = [];
-  for (let i = 0; i <= 10; i++) {
-    if (i % 2 === 0) arr.push(i);
+  function innerFunction() {
+    const innerVar = "I'm from innerFunction";
+    console.log(outerVar); 
+    console.log(innerVar); 
   }
-  return arr;
-})();
 
-console.log(evenNumbers);
+  innerFunction();
+ console.log(innerVar);
+}
+
+outerFunction();
+// Create a function that returns another function with access to outer variables
+function outerFunction(name) {
+  const greeting = "Hello";
+
+  return function innerFunction() {
+    console.log(`${greeting}, ${name}!`);
+  };
+}
+const greet = outerFunction("john doe");
+greet();
+// Demonstrate the difference between var and let/const scoping
+function testLetConst() {
+  if (true) {
+    let y = 20;
+    const z = 30;
+  }
+  console.log(y); 
+  console.log(z); 
+}
+
+testLetConst();
+
+// Create a function with parameters and access them inside the function
+function greet(name, age) {
+  console.log(`Hello, ${name}! You are ${age} years old.`);
+}
+
+// Call the function
+greet("John Doe", 27);
+
+// Create a global variable and access it from inside a function
+let global = "Hello John";
+function globalFuncion(){
+    console.log(global);
+}
+globalFuncion();
+// Create a function that declares a variable with the same name as a global variable
+let message = "Hello from the global scope";
+
+function showMessage() {
+  let message = "Hello from inside the function";
+  console.log(message); 
+}
+
+showMessage();
+console.log(message);
+// Create nested blocks and demonstrate block scoping
+{
+  let outer = "I'm in the outer block";
+  const outerConst = "Outer const value";
+
+  console.log(outer);       
+  console.log(outerConst);  
+
+  {
+    let inner = "I'm in the inner block";
+    const innerConst = "Inner const value";
+
+    console.log(outer);     
+    console.log(inner);     
+    console.log(innerConst); 
+  }
+
+  
+}
+
+try {
+  console.log(outer);      
+  console.log(outerConst);  
+} catch (err) {
+  console.error("Error:", err.message);
+}
+
