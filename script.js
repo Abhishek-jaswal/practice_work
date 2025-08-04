@@ -607,133 +607,86 @@ console.log(add_toNumber(10,20));
 
 
 
-// Create a function that takes a callback and calls it with a number
-function processNumber(callback){
-    let number = 42;
-    callback(number);
-}
-function print(num){
-    console.log(`recived number ${num}`)
-
-}
-processNumber(print);
-
-// Create a function that takes a callback and calls it with a string
-function processStr(callback){
-    let str = "john doe";
-    callback(str);
-}
-function print(name){
-    console.log(`recived name ${name}`)
-
-}
-processStr(print);
-
-// Create a function that takes a callback and calls it with an array
-function processArry(callback){
-    let arr = [1,2,3,4];
-    callback(arr);
-}
-function print(arr){
-    console.log(`recived array ${rr}`)
-
-}
-processArry(print);
-
-// Create a function that takes a callback and calls it with an object
-function processObj(callback){
-    let obj = {name:"John Doe", age:25};
-    callback(obj);
-}
-function print(obj){
-    console.log(`recived object ${obj}`)
-
-}
-processObj(print);
-
-// Use setTimeout with a callback function
-function callBack(){
-    console.log("Hello after 2 seconds");
-}
-setTimeout(callBack,2000)
-// Use setInterval with a callback function
-function callBack(){
-    console.log("Hello after every 2 seconds");
-}
-setInterval(callBack,2000)
-// Create a function that takes a callback and calls it after a delay
-function callAfter(callback,delay){
-    setTimeout(callback,delay)
-}
-callAfter(()=>{
-    console.log("this message rint after 2 second")
-},2000)
-// Use forEach with a callback function
-let numbers = [1,2,3,4,5,6];
-numbers.forEach(function(num){
-    console.log('Number :',num)
+// Create an IIFE that prints "Hello World"
+( function(){
+console.log("Hello World")
+})();
+// Create an IIFE that takes a parameter and prints it
+( function(message){
+console.log(message)
+})("Hello World");
+// Create an IIFE that returns a value
+const value = (function(){
+    return 42;
+})();
+console.log(value);
+// Create an IIFE that creates a private variable
+const counter = (function(){
+    let count = 0;
+    return {
+        increment(){
+            count++;
+            console.log("count"+count);
+        },
+        getCount(){
+            return count;
+        }
+    }
 })
-// Use map with a callback function
-let number = [1,2,3,4,5,6];
-let double = numbers.map(function(num){
-    return(num * 2);
-})
-console.log(double)
+counter.increment(); 
+counter.increment(); 
+console.log(counter.getCount());
+// Create an IIFE that returns a function
+const greeter = (function(){
+    const greeting = "Hello"
+    return function(name){
+       console.log(`${greeting}, ${name}`)
+    }
+})();
+greeter("John Doe")
+// Create an IIFE with arrow function syntax
+(()=>{
+    console.log("hello world")
+})();
+// Create an IIFE that takes multiple parameters
+const sum = ((a,b)=>{
+   return a+b;
+})(2,3)
+console.log("sum is "+ sum)
+// Create an IIFE that performs a calculation
+const summ = ((a,b,c)=>{
+    return `${a}${c}${b}`
+})(2,3,"-")
+console.log( summ)
+// Create an IIFE that creates an object
+const user = (function () {
+  const name = "John Doe";
+  const role = "Developer";
 
-// Use filter with a callback function
-let num = [1,2,3,4,5,6];
-let even = numbers.filter(function(num){
-    return num % 2 ==0;
-})
-console.log(even)
-// Create a function that takes a callback and calls it conditionally
-function conditionCaller(condition,callback){
-    if(condition){
-        callback();
+  return {
+    getName() {
+      return name;
+    },
+    getRole() {
+      return role;
+    },
+    greet() {
+      console.log(`Hello, I'm ${name}, and I'm a ${role}.`);
     }
-    else{
-        console.log("Does not call the condition is false")
-    }
-}
-function sayHello(){
-    console.log("Hello the condition was true")
-}
-conditionCaller(true,sayHello)
-// Create a function that takes multiple callbacks
-function multipleCallback(successCall,failureCall){
-    let isSuccessful = Math.random()>0.5;
-    if(isSuccessful){
-        successCall("action success");
-    }
-    else{
-        failureCall("action failed");
-    }
-}
-function success(message){
-   return "success",message
-}
-function failed(message){
-   return "failed",message
-}
-console.log(multipleCallback(success,failed))
-// Create a function that returns a callback {function}
-function createCallback(name){
-    return function (){
-       console.log(`hello ${name}`);
-    }
+  };
+})();
 
-}
-const callingfunction = createCallback('John doe')
-callingfunction();
-// Create a function that takes a callback and calls it with different data types
-function callWithDifferentTypes(callback) {
-  callback("Hello, I am a string");
-  callback(42);                  
-  callback(true);                 
-  callback([1, 2, 3]);           
-  callback({ name: "John Doe" }); 
-  callback(null);                 
-}
-callWithDifferentTypes((data) => {
-  console.log("Received:", data, "| Type:", typeof data);
-});
+// Usage
+user.greet();                
+console.log(user.getName()); 
+console.log(user.getRole());
+// Create an IIFE that creates an array
+const evenNumbers = (function () {
+  const arr = [];
+  for (let i = 0; i <= 10; i++) {
+    if (i % 2 === 0) arr.push(i);
+  }
+  return arr;
+})();
+
+console.log(evenNumbers);
