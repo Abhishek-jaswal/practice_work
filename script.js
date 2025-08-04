@@ -607,90 +607,133 @@ console.log(add_toNumber(10,20));
 
 
 
-// Create a function and assign it to a variable
-function assign(){
-    return "Helo World"
+// Create a function that takes a callback and calls it with a number
+function processNumber(callback){
+    let number = 42;
+    callback(number);
 }
-let fun = assign();
-console.log(fun);
-// Pass a function as an argument to another function
-function greet(name){
-    return `Helo`+ name;
-}
-function process(func,name){
-    message = func(name);
-    return message;
-}
-console.log(process(assign,John))
-// Return a function from another function
-function fun_1(){
-    function fun_2(){
-        return "function 2 output";
-    }
-    return fun_2();
-}
-console.log(fun_1())
-// Create a function that takes a function as a parameter
-function callAsParameter(){
-    return "This function return as a parameter";
-}
-function para(call){
-    return call();
-}
-console.log(para(callAsParameter))
-// Create a function that returns different functions based on input
-function greetings(name){
-    return "Helo" + name + "Welcome";
-}
-function call_greet(fun,name){
-    return fun(name);
-}
-console.log(call_greet(greetings,"john Doe"))
-// Store multiple functions in an array
-function fun1(){
-    console.log("function 1")
-}
-function fun2(){
-    console.log("function 2")
-}
-function fun3(){
-    console.log("function 3")
-}
-let arry = [fun1(),fun2(),fun3()];
-console.log(arry)
-// Create a function that accepts a callback function
-function greetUser(name,callback){
-    console.log(`hello ${name}`);
-    callback();
-}
-function goodbye(){
-    console.log("good bye");
-}
-greetUser("john",goodbye)
-// Create a function that returns a function with specific behavior
+function print(num){
+    console.log(`recived number ${num}`)
 
-function createAcess(){
-   return function (action){
-    if(role == 'admin'){
-           return `Access granted to ${action}`;
-    } else {
-      return `Access denied to ${action}`;
+}
+processNumber(print);
+
+// Create a function that takes a callback and calls it with a string
+function processStr(callback){
+    let str = "john doe";
+    callback(str);
+}
+function print(name){
+    console.log(`recived name ${name}`)
+
+}
+processStr(print);
+
+// Create a function that takes a callback and calls it with an array
+function processArry(callback){
+    let arr = [1,2,3,4];
+    callback(arr);
+}
+function print(arr){
+    console.log(`recived array ${rr}`)
+
+}
+processArry(print);
+
+// Create a function that takes a callback and calls it with an object
+function processObj(callback){
+    let obj = {name:"John Doe", age:25};
+    callback(obj);
+}
+function print(obj){
+    console.log(`recived object ${obj}`)
+
+}
+processObj(print);
+
+// Use setTimeout with a callback function
+function callBack(){
+    console.log("Hello after 2 seconds");
+}
+setTimeout(callBack,2000)
+// Use setInterval with a callback function
+function callBack(){
+    console.log("Hello after every 2 seconds");
+}
+setInterval(callBack,2000)
+// Create a function that takes a callback and calls it after a delay
+function callAfter(callback,delay){
+    setTimeout(callback,delay)
+}
+callAfter(()=>{
+    console.log("this message rint after 2 second")
+},2000)
+// Use forEach with a callback function
+let numbers = [1,2,3,4,5,6];
+numbers.forEach(function(num){
+    console.log('Number :',num)
+})
+// Use map with a callback function
+let number = [1,2,3,4,5,6];
+let double = numbers.map(function(num){
+    return(num * 2);
+})
+console.log(double)
+
+// Use filter with a callback function
+let num = [1,2,3,4,5,6];
+let even = numbers.filter(function(num){
+    return num % 2 ==0;
+})
+console.log(even)
+// Create a function that takes a callback and calls it conditionally
+function conditionCaller(condition,callback){
+    if(condition){
+        callback();
     }
-    }
-   }
-const adminAccess = createAcess("admin");
-const userAccess = createAcess("user");
-console.log(adminAccess('delete'))
-console.log(userAccess('delete'))
-// Pass a function as a property of an object
-const user = {
-    name : "John Doe",
-    greet : function(){
-        console.log(`Hello, my name is ${this.name}`)
+    else{
+        console.log("Does not call the condition is false")
     }
 }
-user.greet();
-// Create a function that can be called immediately after definition
-(function() {
-  console.log("IIFE executed!");
-})();
+function sayHello(){
+    console.log("Hello the condition was true")
+}
+conditionCaller(true,sayHello)
+// Create a function that takes multiple callbacks
+function multipleCallback(successCall,failureCall){
+    let isSuccessful = Math.random()>0.5;
+    if(isSuccessful){
+        successCall("action success");
+    }
+    else{
+        failureCall("action failed");
+    }
+}
+function success(message){
+   return "success",message
+}
+function failed(message){
+   return "failed",message
+}
+console.log(multipleCallback(success,failed))
+// Create a function that returns a callback {function}
+function createCallback(name){
+    return function (){
+       console.log(`hello ${name}`);
+    }
+
+}
+const callingfunction = createCallback('John doe')
+callingfunction();
+// Create a function that takes a callback and calls it with different data types
+function callWithDifferentTypes(callback) {
+  callback("Hello, I am a string");
+  callback(42);                  
+  callback(true);                 
+  callback([1, 2, 3]);           
+  callback({ name: "John Doe" }); 
+  callback(null);                 
+}
+callWithDifferentTypes((data) => {
+  console.log("Received:", data, "| Type:", typeof data);
+});
