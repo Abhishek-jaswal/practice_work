@@ -562,82 +562,135 @@ function removeDuplicates(arr) {
 console.log("Array after removing duplicates:", removeDuplicates([1, 2, 2, 3, 4, 4, 5]));
 
 
-// Create an object representing a person with name, age, and city properties
-let person = {
-    name: "John Doe",
-    age: 30,
-    city: "New York"
-};
-console.log(person);
 
-// Create an object representing a book with title, author, and year properties
-let book = {
-    title: "To Kill a Mockingbird",
-    author: "Harper Lee",
-    year: 1960
-};
 
-console.log(book);
-
-// Create an object representing a car with brand, model, and year properties
-let car = {
-    brand: "Toyota",
-    model: "Camry",
-    year: 2020
-};
-
-console.log(car);
-// Access and print specific properties of an object
-let car = {
-    brand: "Toyota",
-    model: "Camry",
-    year: 2020
-};
-console.log("Car brand:", car.brand);
-// Add a new property to an existing object
-let car = {
-    brand: "Toyota",
-    model: "Camry",
-    year: 2020
-};
-car.color = "Blue";
-console.log("Updated car object:", car);
-// Create an object with a method that returns a formatted string
-let person = {
-    name: "Alice",
-    age: 25,
-    greet: function() {
-        return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
-    }
-};
-console.log(person.greet());
-// Create nested objects (object within object)
-let student = {
-    name: "Bob",
-    age: 20,
-    address: {
-        street: "123 Main St",
-        city: "Springfield",
-        country: "USA"
-    }
-};
-console.log("Student address:", student.address);
-// Create an object with an array property
-let library = {
-    name: "City Library",
-    books: [
-        { title: "1984", author: "George Orwell" },
-        { title: "To Kill a Mockingbird", author: "Harper Lee" }
-    ]
-};
-console.log("Library books:", library.books);
-// Write a function that takes an object and returns all its keys
-function getObjectKeys(obj) {
-    return Object.keys(obj);
+// Write a function to add two numbers
+function add_toNumber(a,b){
+    return a+b;
 }
-console.log(getObjectKeys({ name: "Alice", age: 25, city: "Wonderland" }));
-// Write a function that takes an object and returns all its values
-function getObjectValues(obj) {
-    return Object.values(obj);
+console.log(add_toNumber(10,20));
+// Write a function to find the maximum of two numbers
+
+// Write a function to check if a number is even or odd
+// Write a function to calculate the factorial of a number
+// Write a function to find the sum of digits of a number
+// Write a function to check if a number is prime
+// Write a function to find the GCD of two numbers
+// Write a function to find the LCM of two numbers
+// Write a function to reverse a number
+// Write a function to check if a number is palindrome
+// Write a function to find the Fibonacci series up to N numbers
+// Write a function to find the N-th Fibonacci number
+// Write a function to find the prime factorization of a number
+// Write a function to find the product of digits of a number
+// Write a function to calculate the nth triangular number
+// Write a function to find the number of digits in a number
+// Write a function to find the average of N numbers
+// Write a function to check if a string is palindrome
+// Write a function to count vowels in a string
+// Write a function to count consonants in a string
+// Write a function to find the longest word in a string
+// Write a function to count frequency of each digit in a number
+// Write a function to check if a string contains only digits
+// Write a function to check if a string contains only letters
+// Write a function to check if a string is a valid email address
+// Write a function to find all factors of a number
+// Write a function to check if a number is a perfect cube
+// Write a function to check if a given year is a leap year
+// Write a function to convert binary to decimal
+// Write a function to convert decimal to binary
+// Write a function to count prime numbers between two numbers
+// Write a function to find the largest prime factor of a number
+// Write a function to find the second largest number in an array
+// Write a function to calculate the sum of all divisors of a number
+
+
+
+
+// Create a function and assign it to a variable
+function assign(){
+    return "Helo World"
 }
-console.log(getObjectValues({ name: "Alice", age: 25, city: "Wonderland" }));
+let fun = assign();
+console.log(fun);
+// Pass a function as an argument to another function
+function greet(name){
+    return `Helo`+ name;
+}
+function process(func,name){
+    message = func(name);
+    return message;
+}
+console.log(process(assign,John))
+// Return a function from another function
+function fun_1(){
+    function fun_2(){
+        return "function 2 output";
+    }
+    return fun_2();
+}
+console.log(fun_1())
+// Create a function that takes a function as a parameter
+function callAsParameter(){
+    return "This function return as a parameter";
+}
+function para(call){
+    return call();
+}
+console.log(para(callAsParameter))
+// Create a function that returns different functions based on input
+function greetings(name){
+    return "Helo" + name + "Welcome";
+}
+function call_greet(fun,name){
+    return fun(name);
+}
+console.log(call_greet(greetings,"john Doe"))
+// Store multiple functions in an array
+function fun1(){
+    console.log("function 1")
+}
+function fun2(){
+    console.log("function 2")
+}
+function fun3(){
+    console.log("function 3")
+}
+let arry = [fun1(),fun2(),fun3()];
+console.log(arry)
+// Create a function that accepts a callback function
+function greetUser(name,callback){
+    console.log(`hello ${name}`);
+    callback();
+}
+function goodbye(){
+    console.log("good bye");
+}
+greetUser("john",goodbye)
+// Create a function that returns a function with specific behavior
+
+function createAcess(){
+   return function (action){
+    if(role == 'admin'){
+           return `Access granted to ${action}`;
+    } else {
+      return `Access denied to ${action}`;
+    }
+    }
+   }
+const adminAccess = createAcess("admin");
+const userAccess = createAcess("user");
+console.log(adminAccess('delete'))
+console.log(userAccess('delete'))
+// Pass a function as a property of an object
+const user = {
+    name : "John Doe",
+    greet : function(){
+        console.log(`Hello, my name is ${this.name}`)
+    }
+}
+user.greet();
+// Create a function that can be called immediately after definition
+(function() {
+  console.log("IIFE executed!");
+})();
